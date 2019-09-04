@@ -18,9 +18,13 @@ const tasks = (state = [], action) => {
       );
 
     case "EDIT_TASK":
-      return state.map(task =>
-        task.id === action.id ? { ...task, editing: !task.editing } : task
-      );
+      let tasks = [...state];
+      let indexOfUpdate = tasks.findIndex(task => {
+        return task.id == action.taskId;
+      });
+      tasks[indexOfUpdate].text = action.newText;
+      return tasks;
+
     case "UPDATE":
       return state.map(task => {
         if (task.id === action.id) {
@@ -31,7 +35,7 @@ const tasks = (state = [], action) => {
         } else return task;
       });
       break;
-     default:
+    default:
       return state;
   }
 };

@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleTask: id => dispatch({ type: "TOGGLE_TASK", id }),
-  editTask: text => dispatch({ type: "EDIT_TASK", text })
-  // updateTask: text => dispatch({ type: 'UPDATE', text })
+  editTask: (taskId, newText) =>
+    dispatch({ type: "EDIT_TASK", taskId, newText })
 });
 
 export default connect(

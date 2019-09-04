@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import AddTask from "./components/AddTask";
 import VisibleTasks from "./components/VisibleTasks";
+import { KeyboardAvoidingView } from "react-native";
 
 class TaskApp extends Component {
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.container}>
-          <AddTask />
-          <View>
-            <VisibleTasks />
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          <View style={styles.container}>
+            <AddTask />
+            <View>
+              <VisibleTasks />
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -22,9 +25,9 @@ export default TaskApp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40
+    paddingTop: 20
   },
   contentContainer: {
-    paddingVertical: 20
+    paddingVertical: 10
   }
 });
